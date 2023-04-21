@@ -25,7 +25,7 @@ int Map[17][25] = {
 string Letters = "ABCDEFGHIJKLMNOPQRSTUVWXY";
 int Rob_position[4][2] = {{0, 0}, {0, 0}, {0, 0}, {0, 0} };
 int Pol_position[4][2] = { {0, 0}, {0, 0}, {0, 0}, {0, 0} };
-int lift[3] = { -2, -2, -2 }; //-1-policeman, -2-Free, id-id_roberta
+int lift[3] = { -2, -2, -2 }; //1-policeman, -1-Free, 2-robert
 
 // Find Letter
 int find_letter(char a) {
@@ -85,6 +85,8 @@ public:
     int position_x;
     int position_y;
     int id;
+    int TargetFloor=-1;
+    bool MoveLift = false;
     void set_location(int x, int y) {
         position_x = x;
         position_y = y;
@@ -106,38 +108,103 @@ public:
         
         cout << 'I';
     }
-    void move_up()
+    void Lift(int target)
     {
-        if ((Map[position_x][position_y] == 3) && lift[position_x / 12] == -2)
+        TargetFloor = target;
+
+        if (NowFloor(position_y) == target)
         {
-            lift[position_x/12] = id;
-            set_location(position_x, position_y + 2);
-            cout << 'I';
+            TargetFloor = -1;
+            MoveLift = false;
+            lift[position_x / 12] = 0;
         }
         else
+
         {
+            if (!MoveLift)
+            {
+                if (target > (position_y/4+1))
+                {
+                    set_location(position_x, position_y + 2);
+                }
+                else
+                {
+                    set_location(position_x, position_y - 2);
+
+                }
+                MoveLift = true;
+                cout << target;
+                lift[position_x / 12] = 2;
+
+            }
+            else
+            {
+                if (target > (position_y/4+1))
+                {
+                    set_location(position_x, position_y + 2);
+                }
+                else
+                {
+                    set_location(position_x, position_y - 2);
+
+                }
+                cout << 'I';
+                lift[position_x / 12] = 2;
+            }
+        }   
+    }
+    void move_up()
+    {
+       // if ((Map[position_x][position_y] == 3) && lift[position_x / 12] == -2)
+        
+            
+        
+        
+        
             set_location(position_x, position_y + 1);
             cout << 'U';
-        }
+        
         
     }
     void Nomove()
     {
         cout << 'S';
     }
-    void move_down()
+    /*void Lift_down(int target)
     {
-        if ((Map[position_x][position_y] == 3) && lift[position_x / 12] == -2)
+        TargetFloor = target;
+        if (NowFloor(position_y) == target)
         {
-            lift[position_x / 12] = id;
-            set_location(position_x, position_y - 2);
-            cout << 'I';
+            TargetFloor = -1;
+            MoveLift = false;
+            lift[position_x / 12] = 0;
         }
         else
         {
+            if (!MoveLift)
+            {
+                set_location(position_x, position_y - 2);
+                MoveLift = true;
+                cout << target;
+                lift[position_x / 12] = 2;
+
+            }
+            else
+            {
+                set_location(position_x, position_y - 2);
+                cout << 'I';
+                lift[position_x / 12] = 2;
+            }
+        }
+    }*/
+    void move_down()
+    {
+        //if ((Map[position_x][position_y] == 3) && lift[position_x / 12] == -2)
+        
+        
             set_location(position_x, position_y - 1);
             cout << 'D';
-        }
+      
     }
     void move_Right()
     {
