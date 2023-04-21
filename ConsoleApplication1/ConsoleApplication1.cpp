@@ -246,10 +246,20 @@ int main()
     cin >> side;
     // Создание персонажей
     Robber ArrRob[4];
+    Policeman ArrPol[4];
     /*for (int i = 0; i < 4; i++)
     {
         ArrRob[i].id = i;
     }*/
+    ArrPol[0].set_location(10, 0);
+
+    ArrPol[1].set_location(11, 0);
+
+    ArrPol[2].set_location(13, 0);
+
+    ArrPol[3].set_location(14, 0);
+
+
     ArrRob[0].set_location(6, 16);
     
     ArrRob[1].set_location(14, 16);
@@ -257,6 +267,7 @@ int main()
     ArrRob[2].set_location(4, 12);
     
     ArrRob[3].set_location(16, 8);
+
     write_robbers();
     cout << endl;
     cout << NowFloor(find_letter('I'));
