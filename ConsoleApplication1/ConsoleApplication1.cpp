@@ -82,8 +82,8 @@ int NowFloor(int y)
 class Person {
 public: 
     //int use_lift[2] = { -1,0 };//First: Up/Down; Second: Target Floor
-    int position_x;
-    int position_y;
+    int position_x=1;
+    int position_y=1;
     //int id;
     int TargetFloor=-1;
     bool MoveLift = false;
