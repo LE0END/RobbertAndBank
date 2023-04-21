@@ -23,8 +23,8 @@ int Map[17][25] = {
          {3, 1, 1, 1, 2, 1, 1, 1, 2, 1, 1, 1, 3, 1, 1, 1, 2, 1, 1, 1, 2, 1, 1, 1, 3}
 };
 string Letters = "ABCDEFGHIJKLMNOPQRSTUVWXY";
-int Rob_position[4][2] = {{0, 0}, {0, 0}, {0, 0}, {0, 0} };
-int Pol_position[4][2] = { {0, 0}, {0, 0}, {0, 0}, {0, 0} };
+//int Rob_position[4][2] = {{0, 0}, {0, 0}, {0, 0}, {0, 0} };
+//int Pol_position[4][2] = { {0, 0}, {0, 0}, {0, 0}, {0, 0} };
 int lift[3] = { -2, -2, -2 }; //1-policeman, -1-Free, 2-robert
 
 // Find Letter
@@ -81,20 +81,21 @@ int NowFloor(int y)
 // Персонаж 
 class Person {
 public: 
-    int use_lift[2] = { -1,0 };//First: Up/Down; Second: Target Floor
+    //int use_lift[2] = { -1,0 };//First: Up/Down; Second: Target Floor
     int position_x;
     int position_y;
-    int id;
+    //int id;
     int TargetFloor=-1;
     bool MoveLift = false;
-    void set_location(int x, int y) {
+    void set_location(int x, int y) 
+    {
         position_x = x;
         position_y = y;
-        Rob_position[id][0] = x;
-        Rob_position[id][1] = y;
+       // Rob_position[id][0] = x;
+        //Rob_position[id][1] = y;
     }
 
-    void In_Lift()
+    /*void In_Lift()
     {
         if (use_lift[1])
         {
@@ -107,7 +108,7 @@ public:
         }
         
         cout << 'I';
-    }
+    }*/
     void Lift(int target)
     {
         TargetFloor = target;
@@ -156,15 +157,8 @@ public:
     void move_up()
     {
        // if ((Map[position_x][position_y] == 3) && lift[position_x / 12] == -2)
-        
-            
-        
-        
-        
             set_location(position_x, position_y + 1);
             cout << 'U';
-        
-        
     }
     void Nomove()
     {
@@ -229,8 +223,8 @@ public:
     void set_location(int x, int y) {
     position_x = x;
     position_y = y;
-    Pol_position[id][0] = x;
-    Pol_position[id][1] = y;
+   // Pol_position[id][0] = x;
+   // Pol_position[id][1] = y;
 }
 };
 
@@ -252,10 +246,10 @@ int main()
     cin >> side;
     // Создание персонажей
     Robber ArrRob[4];
-    for (int i = 0; i < 4; i++)
+    /*for (int i = 0; i < 4; i++)
     {
         ArrRob[i].id = i;
-    }
+    }*/
     ArrRob[0].set_location(6, 16);
     
     ArrRob[1].set_location(14, 16);
