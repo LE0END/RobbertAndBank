@@ -23,8 +23,8 @@ int Map[17][25] = {
          {3, 1, 1, 1, 2, 1, 1, 1, 2, 1, 1, 1, 3, 1, 1, 1, 2, 1, 1, 1, 2, 1, 1, 1, 3}
 };
 string Letters = "ABCDEFGHIJKLMNOPQRSTUVWXY";
-//int Rob_position[4][2] = {{0, 0}, {0, 0}, {0, 0}, {0, 0} };
-//int Pol_position[4][2] = { {0, 0}, {0, 0}, {0, 0}, {0, 0} };
+int Rob_position[4][2] = {{0, 0}, {0, 0}, {0, 0}, {0, 0} };
+int Pol_position[4][2] = { {0, 0}, {0, 0}, {0, 0}, {0, 0} };
 int lift[3] = { -2, -2, -2 }; //1-policeman, -1-Free, 2-robert
 
 // Find Letter
